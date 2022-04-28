@@ -28,7 +28,7 @@ const Display = () => {
           overflow: 'auto'
         }} > 
 
-        <Typography variant="caption"> Your chat starts here </Typography>
+        <Typography variant="caption" color='gray'> Your chat starts here </Typography>
         {
           allMessages.map((msg, index) => (
             <DisplayBubble 

@@ -14,18 +14,6 @@ const sentMsgsReducer = (state, action) => {
                    thread: payload.thread
                }
             );
-
-        // case "DELETE_SENT_MSGS":
-        //     console.log("delete",payload)
-        //     return(
-        //         [
-        //             ...state,
-        //             {
-        //                 person:payload.person, 
-        //                 message: payload.message
-        //             }
-        //         ]
-        //     );
         default:
             return;
                  
