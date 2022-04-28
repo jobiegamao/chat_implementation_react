@@ -1,13 +1,12 @@
 import { Box, Button, TextField } from '@mui/material';
 import React, { useContext, useEffect } from 'react';
 import SendIcon from '@mui/icons-material/Send';
-import { SentMsgsContext } from '../context/ContextProvider';
+import useSentMsgs from "../context/ContextProvider";
 
 const RightInput = () => {
 
   const [value, setValue] = React.useState('');
-  // const [msgs, setMsgs] = React.useState([{person:1, message:''}]);
-  const [msgs, setMsgs] = useContext(SentMsgsContext);
+  const { addSentMsgs, allMessages } = useSentMsgs();
   
   
   const handleChange = (event) => {
@@ -16,13 +15,10 @@ const RightInput = () => {
 
   const handleClick = (e) => {
     e.preventDefault();
-    setMsgs(prevMsgs => (
-      {...prevMsgs, 
-        person:2, 
-        message: value
-      }
-    ))
-    console.log(msgs);
+    const personName = 2;
+    const bubble = { personName , value};
+    addSentMsgs(bubble);
+    // console.log(msgs);
   }
 
 
@@ -41,7 +37,7 @@ const RightInput = () => {
       
       <TextField
           id="standard-multiline-static"
-          label="Person 1 message here"
+          label="Person 2 message here"
           multiline
           rows={2}
           variant="standard"
@@ -59,9 +55,12 @@ const RightInput = () => {
       >
         Send
       </Button>
-      <h1>{console.log(msgs)}</h1>
+      {/* <h1>{console.log(msgs)}</h1> */}
+      {/* {msgs.map(({ id, person, message }) => (
+        <p key={msgs.id}>Coffee type {msgs.person} in a {msgs.message} size.</p>
+      ))} */}
     </Box>
   )
 }
 
-export default RightInput
+export default RightInput;

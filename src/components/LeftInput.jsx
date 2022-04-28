@@ -1,13 +1,12 @@
 import { Box, Button, TextField } from '@mui/material';
 import React, { useContext, useEffect } from 'react';
 import SendIcon from '@mui/icons-material/Send';
-import { SentMsgsContext } from '../context/ContextProvider';
+import useSentMsgs from "../context/ContextProvider";
 
 const LeftInput = () => {
 
   const [value, setValue] = React.useState('');
-  // const [msgs, setMsgs] = React.useState([{person:1, message:''}]);
-  const [msgs, setMsgs] = useContext(SentMsgsContext);
+  const { addSentMsgs, allMessages } = useSentMsgs();
   
   
   const handleChange = (event) => {
@@ -16,15 +15,9 @@ const LeftInput = () => {
 
   const handleClick = (e) => {
     e.preventDefault();
-    setMsgs(prevMsgs => (
-      [...prevMsgs,
-        {
-          id: msgs.length + 1, 
-          person:1, 
-          message: value
-        }
-      ]
-    ))
+    const personName = 1;
+    const bubble = { personName , value};
+    addSentMsgs(bubble);
     // console.log(msgs);
   }
 

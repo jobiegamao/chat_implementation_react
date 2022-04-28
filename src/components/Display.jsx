@@ -1,6 +1,7 @@
 import { Box } from "@mui/material"
-import { useContext } from "react";
-import { SentMsgsContext } from '../context/ContextProvider';
+import { useContext, useEffect } from "react";
+import useSentMsgs from "../context/ContextProvider";
+
 
 
 const Display = () => {
@@ -8,7 +9,11 @@ const Display = () => {
 //
     }
 
-    const [msgs, setMsgs] = useContext(SentMsgsContext);
+    const { addSentMsgs, allMessages } = useSentMsgs()
+
+    useEffect( () => {
+      console.log(allMessages)
+    }, [allMessages])
 
   return (
     <Box component="form" padding={5}

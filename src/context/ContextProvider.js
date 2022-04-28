@@ -1,11 +1,43 @@
-import React, { createContext, useState } from "react"
+import React, { createContext, useContext, useReducer, useState } from "react"
+import sentMsgsReducer,{ initialState } from "./reducers";
 
-export const SentMsgsContext = createContext();
+
+const SentMsgsContext = createContext(initialState);
 
 export const ContextProvider = ({children}) => {
-    const [msgs, setMsgs] = useState([{id:0, person:0, message:""}]);
+    const [state, dispatch] = useReducer(sentMsgsReducer, initialState);
 
+    //reducer's switch to function
+
+    const addSentMsgs = (bubble) => {
+      const updatedSentMsgs = state.thread.concat(bubble)
+
+      dispatch({
+        type: "ADD_SENT_MSGS",
+        payload: {
+          thread: updatedSentMsgs
+        }
+      })
+    }
+
+    const value = {
+      allMessages: state,
+      total: state.length,
+      addSentMsgs
+    }
   return (
-    <SentMsgsContext.Provider value={[msgs, setMsgs]}>{children}</SentMsgsContext.Provider>
-  )
+    <SentMsgsContext.Provider value={value}>{children}</SentMsgsContext.Provider>
+  );
+};
+
+const useSentMsgs = () => {
+  const context = useContext(SentMsgsContext)
+
+  if(!context){
+    throw new Error("useSentMsgs must be used within SentMsgsContext");
+  }
+
+  return context;
 }
+
+export default useSentMsgs;
