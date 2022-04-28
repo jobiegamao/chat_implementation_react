@@ -21,7 +21,7 @@ export const ContextProvider = ({children}) => {
     }
 
     const value = {
-      allMessages: state,
+      allMessages: state.thread,
       total: state.length,
       addSentMsgs
     }

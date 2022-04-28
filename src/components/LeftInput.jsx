@@ -52,13 +52,7 @@ const LeftInput = () => {
             marginLeft: 2
         }}
         onClick = {handleClick}
-      >
-        Send
-      </Button>
-      {/* <h1>{console.log(msgs)}</h1> */}
-      {/* {msgs.map(({ id, person, message }) => (
-        <p key={msgs.id}>Coffee type {msgs.person} in a {msgs.message} size.</p>
-      ))} */}
+      >Send</Button>
     </Box>
   )
 }
