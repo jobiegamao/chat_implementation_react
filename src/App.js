@@ -1,25 +1,33 @@
 
-import { Box, Container } from '@mui/material';
+import { Box, Container, Grid } from '@mui/material';
 import  styled  from 'styled-components';
 import './App.css';
 import Display from './components/Display';
 import LeftInput from './components/LeftInput';
 import RightInput from './components/RightInput';
+import { ContextProvider } from './context/ContextProvider';
 
 
 function App() {
-
+  const pageStyle = {
+    p: 10
+  }
   return (
-    <Box border={1} sx={{ 
-      display: 'grid',
+    <ContextProvider>
+      <Grid container spacing={3} sx={pageStyle}>
+        <Grid item xs={12}>
+            <Display />
+        </Grid>
+        <Grid item xs={12} md={6}>
+          <LeftInput  />
+        </Grid>
+        <Grid item xs={12} md={6}>
+          <RightInput  />
+        </Grid>
+      </Grid>
+    </ContextProvider>
 
-     }} >
-      <Display />
-      <Container sx={{ gridRow: '2', display:'flex' }}>
-        <LeftInput  />
-        <RightInput />
-      </Container>
-    </Box>
+  
   );
 }
 
