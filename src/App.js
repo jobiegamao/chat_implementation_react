@@ -1,10 +1,8 @@
 
 import { Box, Container, Grid } from '@mui/material';
-import  styled  from 'styled-components';
 import './App.css';
 import Display from './components/Display';
-import LeftInput from './components/LeftInput';
-import RightInput from './components/RightInput';
+import Inputbox from './components/Inputbox';
 import { ContextProvider } from './context/ContextProvider';
 
 
@@ -15,15 +13,9 @@ function App() {
   return (
     <ContextProvider>
       <Grid container spacing={3} sx={pageStyle}>
-        <Grid item xs={12}>
-            <Display />
-        </Grid>
-        <Grid item xs={12} md={6}>
-          <LeftInput  />
-        </Grid>
-        <Grid item xs={12} md={6}>
-          <RightInput  />
-        </Grid>
+        <Display />
+        <Inputbox personName="Left"  />
+        <Inputbox personName="Right"  />
       </Grid>
     </ContextProvider>
 

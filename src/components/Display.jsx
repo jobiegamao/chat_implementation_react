@@ -1,6 +1,7 @@
-import { Box } from "@mui/material"
+import { Box, Grid, Typography } from "@mui/material"
 import { useContext, useEffect } from "react";
 import useSentMsgs from "../context/ContextProvider";
+import DisplayBubble from "./DisplayBubble";
 
 
 
@@ -14,29 +15,32 @@ const Display = () => {
     }, [allMessages])
 
   return (
-    <Box component="form" padding={5}
-      sx={{
-        flexDirection: { xs: 'column', md: 'row' },
-        alignItems: 'start',
-        bgcolor: 'background.paper',
-        overflow: 'hidden',
-        borderRadius: '12px',
-        boxShadow: 4,
-        fontWeight: 'bold',
-        maxHeight: 300, 
-        overflow: 'auto'
-      }} > 
+    <Grid item xs={12}>
+      <Box component="form" padding={5}
+        sx={{
+          flexDirection: { xs: 'column', md: 'row' },
+          bgcolor: 'background.paper',
+          borderRadius: '12px',
+          boxShadow: 4,
+          fontWeight: 'bold',
+          maxHeight: 200, 
+          height: 200, 
+          overflow: 'auto'
+        }} > 
 
-      <h6>Your Chat Starts Here</h6>
-      {
-        allMessages.map((msg, index) => (
-          <Box>
-            {msg.personName}: {msg.value}
-          </Box>
-        ))
-      }
+        <Typography variant="caption"> Your chat starts here </Typography>
+        {
+          allMessages.map((msg, index) => (
+            <DisplayBubble 
+              key={msg.index}
+              personName={msg.personName}
+              message={msg.value}
+            />
+          ))
+        }
 
-      </Box>
+        </Box>
+    </Grid>
   )
 }
 
