@@ -7,23 +7,25 @@ const SentMsgsContext = createContext(initialState);
 export const ContextProvider = ({children}) => {
     const [state, dispatch] = useReducer(sentMsgsReducer, initialState);
 
-    //reducer's switch to function
-
+   
     const addSentMsgs = (bubble) => {
-      const updatedSentMsgs = state.thread.concat(bubble)
-
       dispatch({
         type: "ADD_SENT_MSGS",
-        payload: {
-          thread: updatedSentMsgs
-        }
+        payload: bubble
+      })
+    }
+    const deleteSentMsg = (bubbleID) => {
+      dispatch({
+        type: "DELETE_SENT_MSG",
+        payload: bubbleID
       })
     }
 
+
     const value = {
       allMessages: state.thread,
-      total: state.length,
-      addSentMsgs
+      addSentMsgs,
+      deleteSentMsg,
     }
   return (
     <SentMsgsContext.Provider value={value}>{children}</SentMsgsContext.Provider>

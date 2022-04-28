@@ -7,11 +7,10 @@ import DisplayBubble from "./DisplayBubble";
 
 const Display = () => {
 
-    const { addSentMsgs, allMessages } = useSentMsgs()
+    const { addSentMsgs, deleteSentMsg, allMessages } = useSentMsgs()
 
     useEffect( () => {
       console.log(allMessages)
-      const displayMsgs = allMessages;
     }, [allMessages])
 
   return (
@@ -22,7 +21,6 @@ const Display = () => {
           bgcolor: 'background.paper',
           borderRadius: '12px',
           boxShadow: 4,
-          fontWeight: 'bold',
           maxHeight: 200, 
           height: 200, 
           overflow: 'auto'
@@ -30,11 +28,12 @@ const Display = () => {
 
         <Typography variant="caption" color='gray'> Your chat starts here </Typography>
         {
-          allMessages.map((msg, index) => (
+          allMessages.map((msg) => (
             <DisplayBubble 
-              key={msg.index}
-              personName={msg.personName}
-              message={msg.value}
+              key={msg.id}
+              personName={msg.name}
+              message={msg.message}
+              handleDelete={() => deleteSentMsg(msg.id)}
             />
           ))
         }

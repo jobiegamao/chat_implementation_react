@@ -2,6 +2,7 @@ import { Box, Button, Grid, TextField } from '@mui/material';
 import React, { useContext, useEffect, useState } from 'react';
 import SendIcon from '@mui/icons-material/Send';
 import useSentMsgs from "../context/ContextProvider";
+import uuid from 'react-uuid';
 
 const Inputbox = ( {personName }) => {
 
@@ -14,7 +15,11 @@ const Inputbox = ( {personName }) => {
 
   const handleClick = (e) => {
     e.preventDefault();
-    const bubble = { personName , value};
+    const bubble = { 
+      id: uuid(),
+      name: personName ,
+      message: value
+    };
     addSentMsgs(bubble);
     setValue('');
   }
