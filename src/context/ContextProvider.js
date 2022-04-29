@@ -2,12 +2,13 @@ import React, { createContext, useContext, useReducer, useState } from "react"
 import sentMsgsReducer,{ initialState } from "./reducers";
 
 
-const SentMsgsContext = createContext(initialState);
+const SentMsgsContext = createContext();
 
+//wrapper in app.js
 export const ContextProvider = ({children}) => {
     const [state, dispatch] = useReducer(sentMsgsReducer, initialState);
-
    
+    //functions can be called instead of  calling dispatch in components/pages
     const addSentMsgs = (bubble) => {
       dispatch({
         type: "ADD_SENT_MSGS",
@@ -21,7 +22,7 @@ export const ContextProvider = ({children}) => {
       })
     }
 
-
+    //what must be accessed in diff components/pages
     const value = {
       allMessages: state.thread,
       addSentMsgs,
@@ -32,7 +33,8 @@ export const ContextProvider = ({children}) => {
   );
 };
 
-const useSentMsgs = () => {
+// what needs to be called in components/pages
+const useSentMsgsContext = () => {
   const context = useContext(SentMsgsContext)
 
   if(!context){
@@ -42,4 +44,4 @@ const useSentMsgs = () => {
   return context;
 }
 
-export default useSentMsgs;
+export default useSentMsgsContext;

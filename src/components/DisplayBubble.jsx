@@ -1,15 +1,13 @@
-import { HighlightOffOutlined } from '@mui/icons-material';
+import { Remove } from '@mui/icons-material';
 import { Box, styled, Typography } from '@mui/material'
 import React, { useState } from 'react'
 
 const NameDiv = styled("div")({
-    marginLeft:5,
-    marginRight:5
+    marginRight:5,
 
 });
 
 const MsgDiv = styled("div")({
- 
 });
 
 
@@ -18,24 +16,33 @@ const DisplayBubble = ({ personName, message, handleDelete }) => {
   return (
     <Box 
         sx={{ 
-            display:'flex' ,
-            mt:2, 
+            display: 'flex',
+            alignItems:'center',
+            mt:2,
+            p:1,
             color: personName == 'Left' ? 'green' : 'red',
             fontSize: 15,
-            // '&:hover': {
-            //     background: "rgb(7, 177, 77, 0.42)", 
-            //     cursor:'pointer'               
-            // }
+            '&:hover': {
+                background: 'lightgray',                
+            },
+            
         }}
         onMouseEnter={() => setShowDelete(true)}
         onMouseLeave={() => setShowDelete(false)}
     >
-        {showDelete && 
-            <HighlightOffOutlined onClick={handleDelete} fontSize='small' cursor='pointer' />
-        }
+        
         <NameDiv>{personName}:</NameDiv>
         <MsgDiv>{message}</MsgDiv>
-
+        
+        {showDelete && 
+            <Remove onClick={handleDelete} 
+            sx={{
+                ml: 'auto',
+                cursor:'pointer',
+                height: 15
+                }} 
+            />
+        }
         
     </Box>
 

@@ -1,20 +1,20 @@
-import { Box, Grid, Typography } from "@mui/material"
-import { useContext, useEffect } from "react";
-import useSentMsgs from "../context/ContextProvider";
+import { Box, Typography } from "@mui/material"
+import { useEffect } from "react";
+import useSentMsgsContext from "../context/ContextProvider";
 import DisplayBubble from "./DisplayBubble";
 
 
 
 const Display = () => {
 
-    const { addSentMsgs, deleteSentMsg, allMessages } = useSentMsgs()
+    const {deleteSentMsg, allMessages } = useSentMsgsContext();
 
     useEffect( () => {
       console.log(allMessages)
     }, [allMessages])
 
   return (
-    <Grid item xs={12}>
+    
       <Box component="form" padding={5}
         sx={{
           flexDirection: { xs: 'column', md: 'row' },
@@ -39,7 +39,7 @@ const Display = () => {
         }
 
         </Box>
-    </Grid>
+  
   )
 }
 

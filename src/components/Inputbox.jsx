@@ -1,13 +1,13 @@
-import { Box, Button, Grid, TextField } from '@mui/material';
-import React, { useContext, useEffect, useState } from 'react';
+import { Box, Button, TextField } from '@mui/material';
+import React, { useState } from 'react';
 import SendIcon from '@mui/icons-material/Send';
-import useSentMsgs from "../context/ContextProvider";
+import useSentMsgsContext from "../context/ContextProvider";
 import uuid from 'react-uuid';
 
 const Inputbox = ( {personName }) => {
 
   const [value, setValue] = useState('');
-  const { addSentMsgs, allMessages } = useSentMsgs();
+  const { addSentMsgs } = useSentMsgsContext();
   
   const handleChange = (event) => {
     setValue(event.target.value);
@@ -26,17 +26,17 @@ const Inputbox = ( {personName }) => {
 
 
   return (
-    <Grid item xs={12} md={6}>
+    
       <Box component="form"
         sx={{
           display: 'flex',
           flexDirection: { xs: 'column', md: 'row' },
-          alignItems: { xs: 'center', md: 'end' },
+          alignItems: { xs: 'end', md: 'end' },
           bgcolor: 'background.paper',
           overflow: 'hidden',
           borderRadius: '12px',
           boxShadow: 5,
-          p: 5,
+          p: { xs: 3, md: 5 },
           
         }} > 
       
@@ -46,8 +46,10 @@ const Inputbox = ( {personName }) => {
             multiline
             rows={2}
             variant="standard"
+            size="small"
             sx={{ 
-              flex: 4
+              flex: 4,
+              width: {xs: 400}
             }}
             onChange={handleChange}
             value={value}
@@ -55,12 +57,13 @@ const Inputbox = ( {personName }) => {
         <Button variant="contained" endIcon={<SendIcon />} 
           sx={{ 
               flex: 1,
-              marginLeft: 2
+              ml: { md: 2 },
+              mt: { xs: 3 },  
           }}
           onClick = {handleClick}
         >Send</Button>
       </Box>
-    </Grid>
+
   )
 }
 
