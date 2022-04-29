@@ -9,16 +9,15 @@ const Display = () => {
 
     const {deleteSentMsg, allMessages } = useSentMsgsContext();
 
-    useEffect( () => {
-      console.log(allMessages)
-    }, [allMessages])
+    // useEffect( () => {
+    //   console.log(allMessages)
+    // }, [allMessages])
 
   return (
     
       <Box component="form" padding={5}
         sx={{
           flexDirection: { xs: 'column', md: 'row' },
-          bgcolor: 'background.paper',
           borderRadius: '12px',
           boxShadow: 4,
           maxHeight: 200, 

@@ -2,7 +2,7 @@ import { Remove } from '@mui/icons-material';
 import { Box, styled, Typography } from '@mui/material'
 import React, { useState } from 'react'
 
-const NameDiv = styled("div")({
+const NameDiv = styled("div")({ //using styled-components
     marginRight:5,
 
 });

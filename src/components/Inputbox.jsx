@@ -9,8 +9,8 @@ const Inputbox = ( {personName }) => {
   const [value, setValue] = useState('');
   const { addSentMsgs } = useSentMsgsContext();
   
-  const handleChange = (event) => {
-    setValue(event.target.value);
+  const handleChange = (e) => {
+    setValue(e.target.value);
   };
 
   const handleClick = (e) => {
@@ -32,7 +32,6 @@ const Inputbox = ( {personName }) => {
           display: 'flex',
           flexDirection: { xs: 'column', md: 'row' },
           alignItems: { xs: 'end', md: 'end' },
-          bgcolor: 'background.paper',
           overflow: 'hidden',
           borderRadius: '12px',
           boxShadow: 5,
@@ -49,7 +48,7 @@ const Inputbox = ( {personName }) => {
             size="small"
             sx={{ 
               flex: 4,
-              width: {xs: 400}
+              width: '100%'
             }}
             onChange={handleChange}
             value={value}
