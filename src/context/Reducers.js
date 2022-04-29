@@ -1,5 +1,5 @@
 export const initialState = {
-    thread: []
+    thread: [] //{id, person, message}
 };
 
 const sentMsgsReducer = (state, action) => {

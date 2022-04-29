@@ -36,11 +36,9 @@ export const ContextProvider = ({children}) => {
 // what needs to be called in components/pages
 const useSentMsgsContext = () => {
   const context = useContext(SentMsgsContext)
-
   if(!context){
-    throw new Error("useSentMsgs must be used within SentMsgsContext");
+    throw new Error("usecontext must be used within SentMsgsContext");
   }
-
   return context;
 }
 
