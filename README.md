@@ -12,7 +12,7 @@
 - useContext
 - useReducer
 - useRef / useState for fields
-  - change branch useRef for useRef
+  - latest update uses useRef
   - change branch useDelete for useState
 
 # UI
