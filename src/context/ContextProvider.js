@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useReducer } from "react"
-import { sentMsgsReducer, initialState } from "./reducers";
+import { sentMsgsReducer, initialState } from "./Reducers";
 
 
 const SentMsgsContext = createContext();

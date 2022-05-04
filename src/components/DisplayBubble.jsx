@@ -19,7 +19,7 @@ export const DisplayBubble = ({ personName, message, handleDelete }) => {
             alignItems:'center',
             mt:2,
             p:1,
-            color: personName == 'Left' ? 'green' : 'red',
+            color: personName === 'Left' ? 'green' : 'red',
             fontSize: 15,
             '&:hover': {
                 background: 'lightgray',                
