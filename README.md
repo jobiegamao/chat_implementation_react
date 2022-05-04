@@ -1,4 +1,4 @@
-# Single Page Live Chat Implementation with only using React Hooks and MUI material for UI with Delete function and reusable components
+# REACT JS Single Page Live Chat Implementation with only using React Hooks and MUI material for UI with Delete function and reusable components
 
 # Run project
 
