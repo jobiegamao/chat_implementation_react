@@ -1,17 +1,16 @@
 import { Remove } from '@mui/icons-material';
-import { Box, styled, Typography } from '@mui/material'
+import { Box, styled } from '@mui/material'
 import React, { useState } from 'react'
 
-const NameDiv = styled("div")({ //using styled-components
+//using styled-components from mui-material
+const NameDiv = styled("div")({ 
     marginRight:5,
-
 });
 
-const MsgDiv = styled("div")({
-});
+const MsgDiv = styled("div")({});
 
 
-const DisplayBubble = ({ personName, message, handleDelete }) => {
+export const DisplayBubble = ({ personName, message, handleDelete }) => {
     const [showDelete, setShowDelete] = useState(false);
   return (
     <Box 
@@ -45,8 +44,5 @@ const DisplayBubble = ({ personName, message, handleDelete }) => {
         }
         
     </Box>
-
   )
-}
-
-export default DisplayBubble
+};

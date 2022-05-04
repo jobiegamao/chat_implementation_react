@@ -1,32 +1,27 @@
 import { Box, Button, TextField } from '@mui/material';
-import React, { useState } from 'react';
+import React, { useRef } from 'react';
 import SendIcon from '@mui/icons-material/Send';
-import useSentMsgsContext from "../context/ContextProvider";
 import uuid from 'react-uuid';
+import { useSentMsgsContext } from '../context/ContextProvider';
 
-const Inputbox = ( {personName }) => {
-
-  const [value, setValue] = useState('');
+export const Inputbox = ( {personName }) => {
+  const textRef = useRef(null);
   const { addSentMsgs } = useSentMsgsContext();
   
-  const handleChange = (e) => {
-    setValue(e.target.value);
-  };
-
   const handleClick = (e) => {
     e.preventDefault();
     const bubble = { 
       id: uuid(),
       name: personName ,
-      message: value
+      message: textRef.current.value
     };
     addSentMsgs(bubble);
-    setValue('');
+    textRef.current.value = '';
   }
 
 
   return (
-    
+  
       <Box component="form"
         sx={{
           display: 'flex',
@@ -50,8 +45,7 @@ const Inputbox = ( {personName }) => {
               flex: 4,
               width: '100%'
             }}
-            onChange={handleChange}
-            value={value}
+            inputRef = {textRef}
           />
         <Button variant="contained" endIcon={<SendIcon />} 
           sx={{ 
@@ -62,8 +56,5 @@ const Inputbox = ( {personName }) => {
           onClick = {handleClick}
         >Send</Button>
       </Box>
-
   )
-}
-
-export default Inputbox
+};

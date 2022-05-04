@@ -2,19 +2,16 @@ export const initialState = {
     thread: [] //{id, person, message}
 };
 
-const sentMsgsReducer = (state, action) => {
-    const {type , payload} = action;
+export const sentMsgsReducer = (state, {type , payload}) => {
 
     switch(type){
         case "ADD_SENT_MSGS":
-            console.log('added',payload)
             return(
                {...state,
                 thread: [...state.thread, payload]}
             );
 
         case "DELETE_SENT_MSG":
-            console.log('deleted',payload)
             return(
                {...state,
                 thread: state.thread.filter((bubble) => bubble.id !== payload) }
@@ -22,9 +19,6 @@ const sentMsgsReducer = (state, action) => {
 
         default:
             return;
-                 
     }
 
-}
-
-export default sentMsgsReducer;
+};
