@@ -1,10 +1,11 @@
-# Live Chat Implementation with only using React Hooks and MUI material for UI.
+# Single Page Live Chat Implementation with only using React Hooks and MUI material for UI with Delete function and reusable components
 
-# with Delete function and reusable components
+# Run project
 
-# NPM Start to run the project
-
-- npm i / yarn install for dependencies
+- npm i / yarn install
+  - for dependencies
+- npm start
+  - to run the project
 
 # Hooks
 

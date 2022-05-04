@@ -1,6 +1,5 @@
 
 import { Grid } from '@mui/material';
-import './App.css';
 import {Display} from './components/Display';
 import {Inputbox} from './components/Inputbox';
 import { ContextProvider } from './context/ContextProvider';
